@@ -1,18 +1,32 @@
+import express, {
+  Application,
+  Request,
+  Response,
+  ErrorRequestHandler,
+} from 'express';
 import cors from 'cors';
-import express, { Application, Request, Response } from 'express';
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import notFound from './app/middlewares/notFound';
+import router from './app/routes';
 
 const app: Application = express();
 
 //parsers
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 
+// application routes
+app.use('/api/v1', router);
 
-
-const getAController = (req: Request, res: Response) => {
-  res.send("Hello World");
+const test = (req: Request, res: Response) => {
+  const a = 'Api Running';
+  res.send(a);
 };
 
-app.get('/', getAController);
+app.get('/', test);
+
+app.use(globalErrorHandler as unknown as ErrorRequestHandler);
+
+app.use(notFound as unknown as express.RequestHandler);
 
 export default app;

@@ -11,6 +11,6 @@ router.post(
   NftControllers.createNft,
 );
 router.get('/:id', NftControllers.getSingleNft);
-router.get('/gallery');
+router.get('/', NftControllers.getNftByAddress);
 
 export const NftRoute = router;

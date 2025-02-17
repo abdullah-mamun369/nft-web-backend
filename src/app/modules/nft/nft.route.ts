@@ -10,7 +10,7 @@ router.post(
   validateRequest(NftValidations.createNftValidationSchema),
   NftControllers.createNft,
 );
-router.get('/:id');
+router.get('/:id', NftControllers.getSingleNft);
 router.get('/gallery');
 
 export const NftRoute = router;

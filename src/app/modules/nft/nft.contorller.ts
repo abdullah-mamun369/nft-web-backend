@@ -14,6 +14,19 @@ const createNft = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleNft = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await NftServices.getSingleNftFromDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Nft is retrieved succesfully',
+    data: result,
+  });
+});
+
 export const NftControllers = {
   createNft,
+  getSingleNft,
 };

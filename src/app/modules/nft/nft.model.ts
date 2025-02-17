@@ -5,7 +5,6 @@ const nftDataSchema = new Schema<TNftData>(
   {
     name: {
       type: String,
-      unique: true,
       required: true,
     },
     description: {

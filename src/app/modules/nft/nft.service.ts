@@ -6,6 +6,12 @@ const createNftIntoDB = async (payload: TNftData) => {
   return result;
 };
 
+const getSingleNftFromDB = async (id: string) => {
+  const result = await Nft.findById(id);
+  return result;
+};
+
 export const NftServices = {
   createNftIntoDB,
+  getSingleNftFromDB,
 };

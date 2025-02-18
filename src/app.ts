@@ -13,7 +13,9 @@ const app: Application = express();
 
 //parsers
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(
+  cors({ origin: 'https://nft-web-frontend.vercel.app', credentials: true }),
+);
 
 // application routes
 app.use('/api/v1', router);
